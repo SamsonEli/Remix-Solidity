@@ -1,0 +1,88 @@
+{
+	"compiler": {
+		"version": "0.6.12+commit.27d51765"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "_from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "_operation",
+						"type": "string"
+					}
+				],
+				"name": "performOperation",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_a",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_b",
+						"type": "uint256"
+					}
+				],
+				"name": "performMath",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "_sum",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"EventArithmetic.sol": "EventArithmetic"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"EventArithmetic.sol": {
+			"keccak256": "0x731f4f0fc3dffc9e726fe291b6c2a912426f44969f1cb66018df694ca2fab226",
+			"urls": [
+				"bzz-raw://b2cedead7057ed3c867483211bf92b34e10575860b398118b759d2432409f637",
+				"dweb:/ipfs/QmcHje3KEnUyL7oFxvZnNzxSqrMFV1FXyCfQpSrrgoP1Dk"
+			]
+		}
+	},
+	"version": 1
+}
