@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.26+commit.8a97fa7a"
+		"version": "0.8.28+commit.7893614a"
 	},
 	"language": "Solidity",
 	"output": {
@@ -210,6 +210,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "FINANCIAL_ADVISOR_ROLE",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "KYC_APPROVER_ROLE",
 				"outputs": [
 					{
@@ -269,6 +282,24 @@
 					}
 				],
 				"name": "approveKYC",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_productId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_addressClient",
+						"type": "address"
+					}
+				],
+				"name": "createCustomerContract",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -577,12 +608,20 @@
 				"dweb:/ipfs/QmVaDGEEbce5LoteRbcV7eYg2VKtpLYJnpX6MvqHir6zoy"
 			]
 		},
-		"FinalProj/main.sol": {
-			"keccak256": "0x6a3c64afb3b40feead06f3ed7a0e984280edd63e1b0eb203cdd2be6227ed4917",
+		"FinalProj/Transaction.sol": {
+			"keccak256": "0xd7d16d7cb19dfef13657db2190336f749df296dc2e4505f76436b523f0e743e1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://eda69f5e056154d6ce42f7e330ef06993e01c499f72e92533893d73bed7b8fc5",
-				"dweb:/ipfs/QmY7oFvWYNpKWWmBdwxajrYBGuxZZfRysSueQZUt3BbZ5K"
+				"bzz-raw://5643b4e742ada34a39f99cfb756a43e89be80c1e447b5956768726b0578f27e9",
+				"dweb:/ipfs/QmSs3JMggi3x6CLRLzfBVZXvB1BFZKZwmTpn3U23Jzu8EZ"
+			]
+		},
+		"FinalProj/main.sol": {
+			"keccak256": "0x2c33ac60bd934adc9b1051d775027e7c687686e41d2ed0d61cc912c4e6e7c5d3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://18930c4878e858e159aa08ff45835b92bc4d89875d529004009eafc4fd82e210",
+				"dweb:/ipfs/QmViqH441GcATFsDoMjNgJw3cZcrqsh91eGz1eUrY7qaxK"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/AccessControl.sol": {
@@ -607,6 +646,14 @@
 			"urls": [
 				"bzz-raw://6a708e8a5bdb1011c2c381c9a5cfd8a9a956d7d0a9dc1bd8bcdaf52f76ef2f12",
 				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
+			]
+		},
+		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol": {
+			"keccak256": "0x11a5a79827df29e915a12740caf62fe21ebe27c08c9ae3e09abe9ee3ba3866d3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://3cf0c69ab827e3251db9ee6a50647d62c90ba580a4d7bbff21f2bea39e7b2f4a",
+				"dweb:/ipfs/QmZiKwtKU1SBX4RGfQtY7PZfiapbbu6SZ9vizGQD9UHjRA"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/introspection/ERC165.sol": {

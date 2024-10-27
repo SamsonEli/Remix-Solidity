@@ -2,20 +2,24 @@
 pragma solidity ^0.8.0;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/AccessControl.sol";
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/ReentrancyGuard.sol";
+
 import "./KYCStorage.sol";
 import "./ClientStorage.sol";
 import "./Transaction.sol";
 
 
-contract main is AccessControl {
+contract main is AccessControl, ReentrancyGuard {
 
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
     bytes32 public constant KYC_APPROVER_ROLE = keccak256("KYC_APPROVER_ROLE");
+    bytes32 public constant FINANCIAL_ADVISOR_ROLE = keccak256("FINANCIAL_ADVISOR_ROLE");
     bytes32 public constant VERIFIED_CLIENT_ROLE = keccak256("VERIFIED_CLIENT_ROLE");
     bytes32 public constant UNVERIFIED_CLIENT_ROLE = keccak256("UNVERIFIED_CLIENT_ROLE");
 
     KYCStorage private kyc;
     ClientStorage private client; 
+    TransactionExecution private transaction;
 
     // Events for transparency
     // event ClientAccessed(address client);
@@ -31,7 +35,6 @@ contract main is AccessControl {
         kyc = new KYCStorage();
         // hasAnyRole[msg.sender] = true;
         addApprover(msg.sender);
-
 
     }
 
@@ -90,6 +93,35 @@ contract main is AccessControl {
     }
 
     //add function to deregister client
+
+    function createCustomerContract(uint256 _productId, address _addressClient) public onlyRole(FINANCIAL_ADVISOR_ROLE) {
+        require(hasRole(VERIFIED_CLIENT_ROLE, _addressClient), "Client must have VERIFIED_CLIENT_ROLE");
+        transaction.createCustomerContract(_productId, _addressClient);
+    }
+
+    function addProduct(string memory _description, uint _price) public onlyRole(FINANCIAL_ADVISOR_ROLE) {
+        transaction.addProduct(_description, _price);
+    }
+
+    function updateProduct(uint256 _productId, string memory _description, uint256 _price, bool _isActive) public onlyRole(FINANCIAL_ADVISOR_ROLE) {
+        transaction.updateProduct(_productId, _description, _price, _isActive);
+    }
+
+    function getProduct(uint _productId) public view returns (string memory description, uint256 price) {
+        return transaction.getProduct(_productId);
+    }
+
+    function approveContract(uint256 _contractId) public onlyRole(VERIFIED_CLIENT_ROLE) {      
+        transaction.approveContract(_contractId);
+    }
+
+    function payContract(uint256 _contractId) public onlyRole(VERIFIED_CLIENT_ROLE) {      
+        transaction.payContract(_contractId);
+    }
+
+    function withdrawFunds() public onlyRole(ADMIN_ROLE) nonReentrant {
+        transaction.withdrawFunds(); 
+    }
 
 
 }

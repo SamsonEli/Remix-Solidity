@@ -12,7 +12,6 @@ contract ClientStorage {
 
     }
 
-    
 
     // Mapping to store client data by their Ethereum address
     mapping(address => Client) private clients;
