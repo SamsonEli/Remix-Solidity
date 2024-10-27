@@ -1,0 +1,84 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "rangForNTime",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "source",
+						"type": "address"
+					}
+				],
+				"name": "BellRung",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "bellRung",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ringTheBell",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"BellRinger.sol": "BellRinger"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"BellRinger.sol": {
+			"keccak256": "0x593344160a037b8d48ccdf88875eeba46a3c2c751764cfeb79a55a14f2583faa",
+			"urls": [
+				"bzz-raw://ff48b69473e9ef5117621fe97b257774a8978a93b12d0309209266786b7b18c3",
+				"dweb:/ipfs/QmWaLCMZVgTTibSVSCTY18PmhmGEzG28EUWCeUyiNv1LhU"
+			]
+		}
+	},
+	"version": 1
+}

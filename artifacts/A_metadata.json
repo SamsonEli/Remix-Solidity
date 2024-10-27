@@ -1,0 +1,51 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [],
+				"name": "callContractB",
+				"outputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Config.sol": "A"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Config.sol": {
+			"keccak256": "0xce1317e17e8dafd2b433f1d3c985cb435e084d237526552188e8c131fa9a011c",
+			"urls": [
+				"bzzr://7feded844033b521fd74c5e3d96fe096ea9b32a9a3153c9c8a9a27b2bb71dbfa"
+			]
+		}
+	},
+	"version": 1
+}
