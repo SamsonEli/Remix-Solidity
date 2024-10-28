@@ -98,19 +98,6 @@
 					{
 						"indexed": false,
 						"internalType": "uint256",
-						"name": "dsds",
-						"type": "uint256"
-					}
-				],
-				"name": "Debug",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"internalType": "uint256",
 						"name": "contractPrice",
 						"type": "uint256"
 					},
@@ -510,11 +497,11 @@
 	},
 	"sources": {
 		"FinalProj/Transaction.sol": {
-			"keccak256": "0x71e6038a73ea60cdbf7f3a2395ff02c8b69f36bff0cb0cd5b630c566c08bad6e",
+			"keccak256": "0xa1b8a9b4e3ee38984709c2c28d72bdbe046b824e3c68068c68e5ae28e47e3b3d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://aada1c82721a0f6de55d12cdc054432baf935f0a2ba5a1cf7353d67d2980583b",
-				"dweb:/ipfs/QmXVaBKoHJrjBpwr7s2zLxj7jvaq6w3HLRPdruS2bZEccH"
+				"bzz-raw://cb79b7ebb5f8206dd97bff7d255c75868390b8e0e6272124cd6d138f0d8628a9",
+				"dweb:/ipfs/QmPTdh6AdnrAXpPwZvc2dYhAbbnkyPKYQap6vPo8xLNmX6"
 			]
 		}
 	},

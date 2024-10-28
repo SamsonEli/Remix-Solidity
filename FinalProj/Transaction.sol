@@ -91,8 +91,6 @@ contract TransactionExecution {
 
     }
 
-    event Debug(uint256 dsds);
-
     function approveContract(uint256 _contractId, address sender) external {
         emit senderAddress(msg.sender);
         CustomerContract storage customerContract = customerContracts[_contractId];
@@ -140,3 +138,12 @@ contract TransactionExecution {
         return address(this).balance;
     }
 }
+
+//     function isTransactionOwner() {
+
+//     }
+
+//     function isProductOwner() {
+
+//     }
+// }

@@ -4,7 +4,133 @@
 	},
 	"language": "Solidity",
 	"output": {
-		"abi": [],
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "auditRecords",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "financialAudit",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "securityAudit",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "auditor",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "blacklistAddresses",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "complianceRecords",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isCompliant",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "additionalNotes",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "furtherAction",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "suspiciousAddresses",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "whitelistAddresses",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
 		"devdoc": {
 			"kind": "dev",
 			"methods": {},
@@ -33,11 +159,11 @@
 	},
 	"sources": {
 		"FinalProj/ComplianceAudit.sol": {
-			"keccak256": "0x409dc01b63198a93a0f4faf1054230c218a1eecc86e25768399c256abe4787a8",
+			"keccak256": "0xb78088e45345fc2f1be52e1adf08738ef116ba834b1be4dd01f1046b7417f1a6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7ea79f728c2ff9da60ff809562f94a1ff0be12d5961a58aa1b2adb9acb8c5a73",
-				"dweb:/ipfs/QmU1m9jXHzQbDJw96sBfuhtieZ53bbmQGcxQPwRERu5TAd"
+				"bzz-raw://f5518f105c3a127add04f125912f008a036f1082d322f7bc8c2894fecd281a6e",
+				"dweb:/ipfs/QmVNpU6o9bScDE9qiieZkRcvM7jhhWhJ2DpTD1aCQm7uQi"
 			]
 		}
 	},

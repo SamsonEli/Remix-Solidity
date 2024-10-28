@@ -8,6 +8,7 @@ import "./KYCStorage.sol";
 import "./ClientStorage.sol";
 import "./Transaction.sol";
 import "./ComplianceAudit.sol";
+import "./Dispute.sol";
 
 
 contract main is AccessControl, ReentrancyGuard {
@@ -17,10 +18,12 @@ contract main is AccessControl, ReentrancyGuard {
     bytes32 public constant FINANCIAL_ADVISOR_ROLE = keccak256("FINANCIAL_ADVISOR_ROLE");
     bytes32 public constant VERIFIED_CLIENT_ROLE = keccak256("VERIFIED_CLIENT_ROLE");
     bytes32 public constant UNVERIFIED_CLIENT_ROLE = keccak256("UNVERIFIED_CLIENT_ROLE");
+    bytes32 public constant COMPLIANCE_ROLE = keccak256("COMPLIANCE_ROLE");
 
     KYCStorage private kyc;
     ClientStorage private client; 
     TransactionExecution private transaction;
+    DisputeManagement private dispute; 
 
     // Events for transparency
     // event ClientAccessed(address client);
@@ -37,6 +40,7 @@ contract main is AccessControl, ReentrancyGuard {
         client = new ClientStorage();
         kyc = new KYCStorage();
         transaction = new TransactionExecution();
+        dispute = new DisputeManagement();
         // hasAnyRole[msg.sender] = true;
         addApprover(msg.sender);
 
@@ -99,7 +103,7 @@ contract main is AccessControl, ReentrancyGuard {
 
     //add function to deregister client
 
-    function createCustomerContract(uint256 _productId, address _addressClient) public onlyRole(FINANCIAL_ADVISOR_ROLE) {
+    function createContract(uint256 _productId, address _addressClient) public onlyRole(FINANCIAL_ADVISOR_ROLE) {
         require(hasRole(VERIFIED_CLIENT_ROLE, _addressClient), "Client must have VERIFIED_CLIENT_ROLE");
         transaction.createCustomerContract(_productId, _addressClient);
     }
@@ -116,8 +120,8 @@ contract main is AccessControl, ReentrancyGuard {
         return transaction.getProduct(_productId);
     }
 
-    function getCustomerContract(uint _productId) public view returns (uint256 contractId, uint256 productId, address customer, bool isApproved, bool isPaid) {
-        return transaction.getCustomerContract(_productId);
+    function getContract(uint _contractId) public view returns (uint256 contractId, uint256 productId, address customer, bool isApproved, bool isPaid) {
+        return transaction.getCustomerContract(_contractId);
     }
 
     function approveContract(uint256 _contractId) public onlyRole(VERIFIED_CLIENT_ROLE) {      
@@ -136,4 +140,21 @@ contract main is AccessControl, ReentrancyGuard {
     }
 
 
+    function sendDispute(uint256 _transactionId, uint256 _productId, string calldata _reason, string calldata _details) public onlyRole(VERIFIED_CLIENT_ROLE) {
+        ( , , address customer, , ) = transaction.getCustomerContract(_transactionId);
+        require(customer == msg.sender, "Only the contract owner can file a dispute");
+        dispute.fileDispute(_productId,_transactionId, _reason, _details, msg.sender);
+    }
+
+    modifier twoRoles(bytes32 role1, bytes32 role2) {
+        require(hasRole(role1, msg.sender) || hasRole(role2, msg.sender), "Access Denied: Caller does not have the required roles");
+        _;
+    }
+
+    // function getDispute(uint256 _disputeId) public twoRoles(VERIFIED_CLIENT_ROLE, COMPLIANCE_ROLE) returns (Dispute memory){
+    //     dispute.getDisputeDetails(_disputeId);
+    // }
+
+
 }
+
