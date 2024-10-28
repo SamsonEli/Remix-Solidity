@@ -7,6 +7,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 import "./KYCStorage.sol";
 import "./ClientStorage.sol";
 import "./Transaction.sol";
+import "./ComplianceAudit.sol";
 
 
 contract main is AccessControl, ReentrancyGuard {
@@ -38,7 +39,6 @@ contract main is AccessControl, ReentrancyGuard {
         transaction = new TransactionExecution();
         // hasAnyRole[msg.sender] = true;
         addApprover(msg.sender);
-        emit DebugValues(msg.value);
 
     }
 

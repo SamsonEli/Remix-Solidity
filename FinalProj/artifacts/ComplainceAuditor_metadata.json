@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"FinalProj/ComplianceAudit.sol": "ComplainceAuditor"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"FinalProj/ComplianceAudit.sol": {
+			"keccak256": "0x409dc01b63198a93a0f4faf1054230c218a1eecc86e25768399c256abe4787a8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7ea79f728c2ff9da60ff809562f94a1ff0be12d5961a58aa1b2adb9acb8c5a73",
+				"dweb:/ipfs/QmU1m9jXHzQbDJw96sBfuhtieZ53bbmQGcxQPwRERu5TAd"
+			]
+		}
+	},
+	"version": 1
+}
