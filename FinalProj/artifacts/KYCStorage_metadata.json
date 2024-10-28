@@ -384,11 +384,11 @@
 	},
 	"sources": {
 		"FinalProj/KYCStorage.sol": {
-			"keccak256": "0xfadaaa9a84400862455d21ebf0a038f0df55b3f59484cb095c1208a0df8f4c47",
+			"keccak256": "0x00f9c6ba8e5727ae0bc7da68527cda3f4a37b12fa512828eb957e38360c57670",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8a9fd43bdc14c8ddff7bed7b8c751f2cc29c5d971a2b16c6839f5700c18705f4",
-				"dweb:/ipfs/QmVaDGEEbce5LoteRbcV7eYg2VKtpLYJnpX6MvqHir6zoy"
+				"bzz-raw://898d285a9bbd8d7b9420d2b4b0196a94cb78568b7c71846142429a3868ad25e9",
+				"dweb:/ipfs/QmXgDaFR8Ap2YT3RqGHGkbNqyneSxy7P4Lj2L2JDnMFvhW"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/AccessControl.sol": {

@@ -48,7 +48,6 @@ contract DisputeManagement {
         emit DisputeFiled(disputeId, _sender, _transactionId, _productId, _reason, block.timestamp);
     }
 
-
     function getDisputeDetails(uint256 _disputeId) external view returns (uint256 disptueId, address client, uint256 productId, uint256 transactionId, string memory reason, string memory details, uint256 status, string memory response, uint256 timestmap) {
         require(_disputeId < disputes.length, "Invalid dispute ID");
         Dispute storage dispute = disputes[_disputeId];

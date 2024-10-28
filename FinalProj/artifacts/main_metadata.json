@@ -215,6 +215,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "COMPLIANCE_ROLE",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "DEFAULT_ADMIN_ROLE",
 				"outputs": [
 					{
@@ -348,7 +361,7 @@
 						"type": "address"
 					}
 				],
-				"name": "createCustomerContract",
+				"name": "createContract",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -396,11 +409,11 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "_productId",
+						"name": "_contractId",
 						"type": "uint256"
 					}
 				],
-				"name": "getCustomerContract",
+				"name": "getContract",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -654,6 +667,34 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "_transactionId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_productId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_reason",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_details",
+						"type": "string"
+					}
+				],
+				"name": "sendDispute",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bytes4",
 						"name": "interfaceId",
 						"type": "bytes4"
@@ -788,6 +829,22 @@
 				"dweb:/ipfs/Qmf2w59XcXW8FTBuFj6H1ZQGifBMyNPS3XokFrTxtG26Xk"
 			]
 		},
+		"FinalProj/ComplianceAudit.sol": {
+			"keccak256": "0xb78088e45345fc2f1be52e1adf08738ef116ba834b1be4dd01f1046b7417f1a6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f5518f105c3a127add04f125912f008a036f1082d322f7bc8c2894fecd281a6e",
+				"dweb:/ipfs/QmVNpU6o9bScDE9qiieZkRcvM7jhhWhJ2DpTD1aCQm7uQi"
+			]
+		},
+		"FinalProj/Dispute.sol": {
+			"keccak256": "0xce177a90f50ec7ddc5aa665622f1843fc20a5500c10fb7bef6388db421569d93",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://78c202bc42a952dea2790753a9e577b4c068ed36ee3ef4d856762d16d1a2e581",
+				"dweb:/ipfs/QmS44UwzoFqBwLMF1tGDWjypChbLaQJtGxSxAnmpAENDNj"
+			]
+		},
 		"FinalProj/KYCStorage.sol": {
 			"keccak256": "0xfadaaa9a84400862455d21ebf0a038f0df55b3f59484cb095c1208a0df8f4c47",
 			"license": "MIT",
@@ -797,19 +854,19 @@
 			]
 		},
 		"FinalProj/Transaction.sol": {
-			"keccak256": "0x71e6038a73ea60cdbf7f3a2395ff02c8b69f36bff0cb0cd5b630c566c08bad6e",
+			"keccak256": "0xa1b8a9b4e3ee38984709c2c28d72bdbe046b824e3c68068c68e5ae28e47e3b3d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://aada1c82721a0f6de55d12cdc054432baf935f0a2ba5a1cf7353d67d2980583b",
-				"dweb:/ipfs/QmXVaBKoHJrjBpwr7s2zLxj7jvaq6w3HLRPdruS2bZEccH"
+				"bzz-raw://cb79b7ebb5f8206dd97bff7d255c75868390b8e0e6272124cd6d138f0d8628a9",
+				"dweb:/ipfs/QmPTdh6AdnrAXpPwZvc2dYhAbbnkyPKYQap6vPo8xLNmX6"
 			]
 		},
 		"FinalProj/main.sol": {
-			"keccak256": "0xbdc153019b85e0d6da5a77a49e76ee18b9eb03229aa4de5009aee03bc14ebb79",
+			"keccak256": "0xf5f312748a734657a5a4f935a66a0440a2be2174054c3bea7233d0e0359fae97",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ac9eaf3d5277bf6bb7e5faa2b02b12237ea9c0d7cbc734992d4bc0385a4d9be1",
-				"dweb:/ipfs/QmYcD29UqfqJSd8eHxrJPP42rNNXCTuAUEDhaKPNWezH6Q"
+				"bzz-raw://b4b9a897ff8e398fc538ea67d6ff57151742ae72d84b8c4ebecfb4973d16d1da",
+				"dweb:/ipfs/QmUkbnyfXNQiq76ov5A2dxnxoAwpytZXmvrPHnsX5e99Pv"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/AccessControl.sol": {

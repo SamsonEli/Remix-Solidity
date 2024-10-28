@@ -25,8 +25,6 @@ contract main is AccessControl, ReentrancyGuard {
     TransactionExecution private transaction;
     DisputeManagement private dispute; 
 
-    // Events for transparency
-    // event ClientAccessed(address client);
 
     mapping(address => bool) public hasAnyRole; // Tracks if an address has any preexisting role
 
@@ -151,9 +149,11 @@ contract main is AccessControl, ReentrancyGuard {
         _;
     }
 
-    // function getDispute(uint256 _disputeId) public twoRoles(VERIFIED_CLIENT_ROLE, COMPLIANCE_ROLE) returns (Dispute memory){
-    //     dispute.getDisputeDetails(_disputeId);
-    // }
+    function getDispute(uint256 _disputeId) public view twoRoles(VERIFIED_CLIENT_ROLE, COMPLIANCE_ROLE) returns (uint256 disptueId, address clientAddress, uint256 productId, uint256 transactionId, string memory reason, string memory details, uint256 status, string memory response, uint256 timestmap){
+        return dispute.getDisputeDetails(_disputeId);
+    }
+
+    
 
 
 }
