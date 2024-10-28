@@ -67,11 +67,61 @@
 					{
 						"indexed": false,
 						"internalType": "uint256",
-						"name": "amount",
+						"name": "ContractAmount",
 						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "PaidAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "excessAmount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
 					}
 				],
 				"name": "ContractPaid",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "dsds",
+						"type": "uint256"
+					}
+				],
+				"name": "Debug",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "contractPrice",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "msgValue",
+						"type": "uint256"
+					}
+				],
+				"name": "DebugValues",
 				"type": "event"
 			},
 			{
@@ -131,6 +181,19 @@
 				"type": "event"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "senderAddress",
+						"type": "address"
+					}
+				],
+				"name": "senderAddress",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string",
@@ -154,6 +217,11 @@
 						"internalType": "uint256",
 						"name": "_contractId",
 						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
 					}
 				],
 				"name": "approveContract",
@@ -235,6 +303,45 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
+						"name": "_contractId",
+						"type": "uint256"
+					}
+				],
+				"name": "getCustomerContract",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "contractId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "productId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "customer",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "isApproved",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isPaid",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
 						"name": "_productId",
 						"type": "uint256"
 					}
@@ -256,11 +363,29 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "getTotalValue",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "uint256",
 						"name": "_contractId",
 						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
 					}
 				],
 				"name": "payContract",
@@ -344,7 +469,13 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					}
+				],
 				"name": "withdrawFunds",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -379,11 +510,11 @@
 	},
 	"sources": {
 		"FinalProj/Transaction.sol": {
-			"keccak256": "0x0386739c2c620c530bee2d19d213fe840910ee218f86766d384d8d79e2927e6c",
+			"keccak256": "0x71e6038a73ea60cdbf7f3a2395ff02c8b69f36bff0cb0cd5b630c566c08bad6e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://55dd2dd5a31d595d0319a5455ca9b75ff07bd41a70b2c9c3068ceeebf70270e0",
-				"dweb:/ipfs/QmS818rUXwqkr3qBMNaSXpLcJnJDZNnhotisSMwuP3ZSr5"
+				"bzz-raw://aada1c82721a0f6de55d12cdc054432baf935f0a2ba5a1cf7353d67d2980583b",
+				"dweb:/ipfs/QmXVaBKoHJrjBpwr7s2zLxj7jvaq6w3HLRPdruS2bZEccH"
 			]
 		}
 	},

@@ -7,7 +7,7 @@
 		"abi": [
 			{
 				"inputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "constructor"
 			},
 			{
@@ -32,6 +32,11 @@
 				"type": "error"
 			},
 			{
+				"inputs": [],
+				"name": "ReentrancyGuardReentrantCall",
+				"type": "error"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -48,6 +53,19 @@
 					}
 				],
 				"name": "ClientRegistered",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "dsdsds",
+						"type": "uint256"
+					}
+				],
+				"name": "DebugValues",
 				"type": "event"
 			},
 			{
@@ -276,6 +294,37 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					}
+				],
+				"name": "addProduct",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_contractId",
+						"type": "uint256"
+					}
+				],
+				"name": "approveContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "_clientAddress",
 						"type": "address"
@@ -330,9 +379,53 @@
 						"type": "string"
 					},
 					{
+						"internalType": "string",
+						"name": "_decryptionKey",
+						"type": "string"
+					},
+					{
 						"internalType": "uint256",
 						"name": "_dateReg",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_productId",
+						"type": "uint256"
+					}
+				],
+				"name": "getCustomerContract",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "contractId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "productId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "customer",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "isApproved",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isPaid",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -354,6 +447,30 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "_productId",
+						"type": "uint256"
+					}
+				],
+				"name": "getProduct",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bytes32",
 						"name": "role",
 						"type": "bytes32"
@@ -365,6 +482,19 @@
 						"internalType": "bytes32",
 						"name": "",
 						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTotalContractValue",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -434,6 +564,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "_contractId",
+						"type": "uint256"
+					}
+				],
+				"name": "payContract",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "_clientAddress",
 						"type": "address"
@@ -446,6 +589,11 @@
 					{
 						"internalType": "string",
 						"name": "_ipfsHash",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_decryptionKey",
 						"type": "string"
 					}
 				],
@@ -521,6 +669,41 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_productId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_price",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_isActive",
+						"type": "bool"
+					}
+				],
+				"name": "updateProduct",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -533,6 +716,11 @@
 				"AccessControlUnauthorizedAccount(address,bytes32)": [
 					{
 						"details": "The `account` is missing a role."
+					}
+				],
+				"ReentrancyGuardReentrantCall()": [
+					{
+						"details": "Unauthorized reentrant call."
 					}
 				]
 			},
@@ -593,11 +781,11 @@
 	},
 	"sources": {
 		"FinalProj/ClientStorage.sol": {
-			"keccak256": "0xfa5b4fd0480c84308849313c0ae87ff467ac1032cdc97ce51f2504f7584dfadb",
+			"keccak256": "0x886f50fd05ea5aaa10eda396b266b1e5bde37dd90724a8889b2bec991f76b54d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e2facdd12095bdc5d7979cd04e74302e00b7baae885a688654115262201a66c2",
-				"dweb:/ipfs/QmbmgdEhacJdP682BzS8PhiBrQv7YRPo4LrS6PHR3EXUSi"
+				"bzz-raw://680574723f510cfea0e742ad3f69a58d37b2feba131471993832fa962402e57e",
+				"dweb:/ipfs/Qmf2w59XcXW8FTBuFj6H1ZQGifBMyNPS3XokFrTxtG26Xk"
 			]
 		},
 		"FinalProj/KYCStorage.sol": {
@@ -609,19 +797,19 @@
 			]
 		},
 		"FinalProj/Transaction.sol": {
-			"keccak256": "0xd7d16d7cb19dfef13657db2190336f749df296dc2e4505f76436b523f0e743e1",
+			"keccak256": "0x71e6038a73ea60cdbf7f3a2395ff02c8b69f36bff0cb0cd5b630c566c08bad6e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://5643b4e742ada34a39f99cfb756a43e89be80c1e447b5956768726b0578f27e9",
-				"dweb:/ipfs/QmSs3JMggi3x6CLRLzfBVZXvB1BFZKZwmTpn3U23Jzu8EZ"
+				"bzz-raw://aada1c82721a0f6de55d12cdc054432baf935f0a2ba5a1cf7353d67d2980583b",
+				"dweb:/ipfs/QmXVaBKoHJrjBpwr7s2zLxj7jvaq6w3HLRPdruS2bZEccH"
 			]
 		},
 		"FinalProj/main.sol": {
-			"keccak256": "0x2c33ac60bd934adc9b1051d775027e7c687686e41d2ed0d61cc912c4e6e7c5d3",
+			"keccak256": "0xbdc153019b85e0d6da5a77a49e76ee18b9eb03229aa4de5009aee03bc14ebb79",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://18930c4878e858e159aa08ff45835b92bc4d89875d529004009eafc4fd82e210",
-				"dweb:/ipfs/QmViqH441GcATFsDoMjNgJw3cZcrqsh91eGz1eUrY7qaxK"
+				"bzz-raw://ac9eaf3d5277bf6bb7e5faa2b02b12237ea9c0d7cbc734992d4bc0385a4d9be1",
+				"dweb:/ipfs/QmYcD29UqfqJSd8eHxrJPP42rNNXCTuAUEDhaKPNWezH6Q"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/AccessControl.sol": {

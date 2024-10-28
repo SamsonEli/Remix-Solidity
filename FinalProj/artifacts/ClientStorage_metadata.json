@@ -31,6 +31,11 @@
 						"type": "string"
 					},
 					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
@@ -59,6 +64,11 @@
 					{
 						"internalType": "string",
 						"name": "_ipfsHash",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_decryptionKey",
 						"type": "string"
 					}
 				],
@@ -114,11 +124,11 @@
 	},
 	"sources": {
 		"FinalProj/ClientStorage.sol": {
-			"keccak256": "0x4ebf905fc938ebd3e159d80c6ee55010ced3564c00cb619fdbb3d56256a40831",
+			"keccak256": "0x886f50fd05ea5aaa10eda396b266b1e5bde37dd90724a8889b2bec991f76b54d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4a3c3709bd8198791c96dc4c20cb6313b2951238213f91af4c2047521026d796",
-				"dweb:/ipfs/QmaFiQSza1wTsX9Gk75WXgihHcdytrErcUHH155qPF6c6d"
+				"bzz-raw://680574723f510cfea0e742ad3f69a58d37b2feba131471993832fa962402e57e",
+				"dweb:/ipfs/Qmf2w59XcXW8FTBuFj6H1ZQGifBMyNPS3XokFrTxtG26Xk"
 			]
 		}
 	},

@@ -26,15 +26,19 @@ contract main is AccessControl, ReentrancyGuard {
 
     mapping(address => bool) public hasAnyRole; // Tracks if an address has any preexisting role
 
+    event DebugValues(uint256 dsdsds);
 
-    constructor() {
+    constructor() payable {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(ADMIN_ROLE, msg.sender);
+        _grantRole(FINANCIAL_ADVISOR_ROLE, msg.sender);
         // _grantRole(KYC_APPROVER_ROLE, msg.sender);
         client = new ClientStorage();
         kyc = new KYCStorage();
+        transaction = new TransactionExecution();
         // hasAnyRole[msg.sender] = true;
         addApprover(msg.sender);
+        emit DebugValues(msg.value);
 
     }
 
@@ -80,15 +84,16 @@ contract main is AccessControl, ReentrancyGuard {
         // require that the address is a customer account
     }
 
-    function registerNewClient(address _clientAddress, string memory _name, string memory _ipfsHash) public onlyRole(KYC_APPROVER_ROLE) {
+    function registerNewClient(address _clientAddress, string memory _name, string memory _ipfsHash, string memory _decryptionKey) public onlyRole(KYC_APPROVER_ROLE) {
         require(hasAnyRole[_clientAddress] == false, "Address already has a role");
-        client.registerClient(_clientAddress, _name, false, _ipfsHash);
+        client.registerClient(_clientAddress, _name, false, _ipfsHash, _decryptionKey);
         grantRole(UNVERIFIED_CLIENT_ROLE, _clientAddress);
         hasAnyRole[_clientAddress] = true; 
+
         emit ClientRegistered(_clientAddress, UNVERIFIED_CLIENT_ROLE);
     }
 
-    function getClientInfo(address _clientAddress) view public onlyRole(KYC_APPROVER_ROLE) returns (string memory _name, bool _isKYCVerified, string memory _docHash, uint256 _dateReg){
+    function getClientInfo(address _clientAddress) view public onlyRole(KYC_APPROVER_ROLE) returns (string memory _name, bool _isKYCVerified, string memory _docHash,  string memory _decryptionKey, uint256 _dateReg){
         return client.getClient(_clientAddress);
     }
 
@@ -111,16 +116,23 @@ contract main is AccessControl, ReentrancyGuard {
         return transaction.getProduct(_productId);
     }
 
-    function approveContract(uint256 _contractId) public onlyRole(VERIFIED_CLIENT_ROLE) {      
-        transaction.approveContract(_contractId);
+    function getCustomerContract(uint _productId) public view returns (uint256 contractId, uint256 productId, address customer, bool isApproved, bool isPaid) {
+        return transaction.getCustomerContract(_productId);
     }
 
-    function payContract(uint256 _contractId) public onlyRole(VERIFIED_CLIENT_ROLE) {      
-        transaction.payContract(_contractId);
+    function approveContract(uint256 _contractId) public onlyRole(VERIFIED_CLIENT_ROLE) {      
+        transaction.approveContract(_contractId, msg.sender);
+    }
+
+    function payContract(uint256 _contractId) public payable onlyRole(VERIFIED_CLIENT_ROLE) {      
+        transaction.payContract{value: msg.value}(_contractId, msg.sender);
+    }
+    function getTotalContractValue() public view returns (uint256 value) {
+        return transaction.getTotalValue();
     }
 
     function withdrawFunds() public onlyRole(ADMIN_ROLE) nonReentrant {
-        transaction.withdrawFunds(); 
+        transaction.withdrawFunds(msg.sender); 
     }
 
 

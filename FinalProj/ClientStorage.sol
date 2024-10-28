@@ -8,6 +8,7 @@ contract ClientStorage {
         string name;
         bool isKYCVerified;
         string ipfsHash;  // Encrypted KYC document on IPFS
+        string decryptionKey; 
         uint256 registrationDate;
 
     }
@@ -28,11 +29,12 @@ contract ClientStorage {
     }
 
     // Register a new client
-    function registerClient(address _clientAddress, string memory _name, bool _kycStatus, string memory _ipfsHash) external onlyNewClient(_clientAddress) {
+    function registerClient(address _clientAddress, string memory _name, bool _kycStatus, string memory _ipfsHash, string memory _decryptionKey) external onlyNewClient(_clientAddress) {
         clients[_clientAddress] = Client({
             name: _name,
             isKYCVerified: _kycStatus,
             ipfsHash: _ipfsHash,
+            decryptionKey: _decryptionKey,
             registrationDate: block.timestamp
         });
     }
@@ -41,10 +43,10 @@ contract ClientStorage {
         clients[_clientAddress].isKYCVerified = _kycStatus;
     }
 
-    function getClient(address _clientAddress) external view returns (string memory, bool, string memory, uint256) {
+    function getClient(address _clientAddress) external view returns (string memory, bool, string memory, string memory, uint256) {
         // Client memory client = clients[_clientAddress];
         
-        return(clients[_clientAddress].name, clients[_clientAddress].isKYCVerified, clients[_clientAddress].ipfsHash, clients[_clientAddress].registrationDate);
+        return(clients[_clientAddress].name, clients[_clientAddress].isKYCVerified, clients[_clientAddress].ipfsHash, clients[_clientAddress].decryptionKey,clients[_clientAddress].registrationDate);
     }
 }
 

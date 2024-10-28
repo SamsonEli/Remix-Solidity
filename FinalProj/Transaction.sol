@@ -19,8 +19,10 @@ contract TransactionExecution {
         bool isPaid;
     }
 
+
     uint256 public contractCount;
     uint256 public productCount;
+
 
     mapping(uint256 => CustomerContract) public customerContracts;
     mapping(uint256 => Product) public products;
@@ -30,11 +32,13 @@ contract TransactionExecution {
 
     event ContractCreated(uint256 contractId, uint256 productId, address customer);
     event ContractApproved(uint256 contractId, address customer);
-    event ContractPaid(uint256 contractId, address customer, uint256 amount);
+    event ContractPaid(uint256 contractId, address customer, uint256 ContractAmount, uint256 PaidAmount, uint256 excessAmount, address contractAddress);
+    
 
-    function addProduct(string memory _description, uint256 _price) public  {
+    event senderAddress(address senderAddress);
+
+    function addProduct(string memory _description, uint256 _price) external  {
         productCount++;
-
         require(products[productCount].price == 0, "Product already exists");
 
         products[productCount] = Product({
@@ -47,7 +51,7 @@ contract TransactionExecution {
         emit ProductAdded(productCount, _description, _price);
     }
 
-    function updateProduct(uint256 _productId, string memory _description, uint256 _price, bool _isActive) public     
+    function updateProduct(uint256 _productId, string memory _description, uint256 _price, bool _isActive) external     
     {
         Product storage product = products[_productId];
         
@@ -80,35 +84,59 @@ contract TransactionExecution {
         emit ContractCreated(contractCount, _productId, _customer);
     }
 
-    function approveContract(uint256 _contractId) external {
+    function getCustomerContract(uint256 _contractId) external view returns (uint256 contractId, uint256 productId, address customer, bool isApproved, bool isPaid) {
+
+       CustomerContract storage customerContract = customerContracts[_contractId];
+       return (customerContract.contractId, customerContract.productId, customerContract.customer, customerContract.isApproved, customerContract.isPaid);
+
+    }
+
+    event Debug(uint256 dsds);
+
+    function approveContract(uint256 _contractId, address sender) external {
+        emit senderAddress(msg.sender);
         CustomerContract storage customerContract = customerContracts[_contractId];
         require(customerContract.customer != address(0), "Contract doesn't exist");
-        require(customerContract.customer == msg.sender, "Only the assigned customer can approve this contract");
+        require(customerContract.customer == sender, "Only the assigned customer can approve this contract");
+        emit senderAddress(customerContract.customer); // Log the customer address
+        emit senderAddress(msg.sender);
         require(!customerContract.isApproved, "Contract already approved");
         customerContract.isApproved = true;
 
         emit ContractApproved(_contractId, msg.sender);
     }
 
-    function payContract(uint256 _contractId) external payable {
+
+    event DebugValues(uint256 contractPrice, uint256 msgValue);
+
+    function payContract(uint256 _contractId, address sender) external payable {
         CustomerContract storage customerContract = customerContracts[_contractId];
         require(customerContract.customer != address(0), "Contract doesn't exist");
-        require(customerContract.customer == msg.sender, "Only the assigned customer can pay for this contract");
+        require(customerContract.customer == sender, "Only the assigned customer can pay for this contract");
         require(customerContract.isApproved, "Contract must be approved before payment");
         require(!customerContract.isPaid, "Contract already paid");
 
         uint256 contractPrice = products[customerContract.productId].price;
 
-        require(msg.value == contractPrice, "Incorrect payment amount");
+        require(msg.value >= contractPrice, "Incorrect payment amount");
+
+        uint256 excessAmount = msg.value - contractPrice;
+
+        if (excessAmount > 0) {
+            payable(sender).transfer(excessAmount);
+        }
 
         customerContract.isPaid = true;
 
-        emit ContractPaid(_contractId, msg.sender, msg.value);
+        emit ContractPaid(_contractId, msg.sender, contractPrice, msg.value, excessAmount, address(this));
     }
 
-    function withdrawFunds() external {
-        address payable owner = payable(msg.sender);
+    function withdrawFunds(address sender) external {
+        address payable owner = payable(sender);
         owner.transfer(address(this).balance);
     }
 
+    function getTotalValue() external view returns (uint256) {
+        return address(this).balance;
+    }
 }
