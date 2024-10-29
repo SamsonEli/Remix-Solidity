@@ -143,11 +143,11 @@
 	},
 	"sources": {
 		"FinalProj/Compliance.sol": {
-			"keccak256": "0xf376c4416fe08c6cd57ef9b557410d26c22c5284c4846e15be177a65e79e3f91",
+			"keccak256": "0x9f94ef691532b61d625ad11bba262d9c16dbe5cedc9f86e69e89784702946413",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f595dfebbdbed53ff27ee914c254b71b26dc611bec673e4c84cd08919968c98f",
-				"dweb:/ipfs/QmarWFwvv6EsgRrooP8B4hLHXFyduNo47aigXhyppuQsiw"
+				"bzz-raw://8949888411087deaf53936629d2a6afef1c32ece65ac3b695635295b8492f30b",
+				"dweb:/ipfs/QmXxFjK1v7hF32FudQMjj8mJdbfRwaB6dqW6pAcmCGfhv4"
 			]
 		}
 	},
