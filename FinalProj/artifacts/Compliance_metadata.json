@@ -1,0 +1,155 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "complianceRecords",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isCompliant",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "additionalNotes",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "furtherAction",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "isUserCompliant",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "isCompliant",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "additionalNotes",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "furtherAction",
+						"type": "bool"
+					}
+				],
+				"name": "recordCompliance",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "isCompliant",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "additionalNotes",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "furtherAction",
+						"type": "bool"
+					}
+				],
+				"name": "updateCompliance",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"FinalProj/Compliance.sol": "Compliance"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"FinalProj/Compliance.sol": {
+			"keccak256": "0xf376c4416fe08c6cd57ef9b557410d26c22c5284c4846e15be177a65e79e3f91",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f595dfebbdbed53ff27ee914c254b71b26dc611bec673e4c84cd08919968c98f",
+				"dweb:/ipfs/QmarWFwvv6EsgRrooP8B4hLHXFyduNo47aigXhyppuQsiw"
+			]
+		}
+	},
+	"version": 1
+}

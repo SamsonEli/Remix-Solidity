@@ -4,7 +4,7 @@ pragma solidity ^0.8.28;
 
 contract DisputeManagement {
 
-    enum DisputeStatus {Filed, Ongoing, Resolved, Escaled}
+    enum DisputeStatus {Filed, Ongoing, Resolved, Escalated}
 
     struct Dispute {
         uint256 disputeId;

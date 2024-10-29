@@ -7,7 +7,8 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 import "./KYCStorage.sol";
 import "./ClientStorage.sol";
 import "./Transaction.sol";
-import "./ComplianceAudit.sol";
+import "./Compliance.sol";
+import "./Audit.sol";
 import "./Dispute.sol";
 
 
@@ -19,11 +20,14 @@ contract main is AccessControl, ReentrancyGuard {
     bytes32 public constant VERIFIED_CLIENT_ROLE = keccak256("VERIFIED_CLIENT_ROLE");
     bytes32 public constant UNVERIFIED_CLIENT_ROLE = keccak256("UNVERIFIED_CLIENT_ROLE");
     bytes32 public constant COMPLIANCE_ROLE = keccak256("COMPLIANCE_ROLE");
+    bytes32 public constant AUDITOR_ROLE = keccak256("AUDITOR_ROLE");
 
     KYCStorage private kyc;
     ClientStorage private client; 
     TransactionExecution private transaction;
     DisputeManagement private dispute; 
+    Compliance private compliance; 
+    Audit private audit; 
 
 
     mapping(address => bool) public hasAnyRole; // Tracks if an address has any preexisting role
@@ -34,13 +38,19 @@ contract main is AccessControl, ReentrancyGuard {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(ADMIN_ROLE, msg.sender);
         _grantRole(FINANCIAL_ADVISOR_ROLE, msg.sender);
-        // _grantRole(KYC_APPROVER_ROLE, msg.sender);
+        _grantRole(KYC_APPROVER_ROLE, msg.sender);
+        _grantRole(COMPLIANCE_ROLE, msg.sender);
+        _grantRole(AUDITOR_ROLE, msg.sender);
+
         client = new ClientStorage();
         kyc = new KYCStorage();
         transaction = new TransactionExecution();
         dispute = new DisputeManagement();
+        compliance = new Compliance(); 
+        audit = new Audit(); 
+
         // hasAnyRole[msg.sender] = true;
-        addApprover(msg.sender);
+        // addApprover(msg.sender);
 
     }
 
@@ -153,8 +163,28 @@ contract main is AccessControl, ReentrancyGuard {
         return dispute.getDisputeDetails(_disputeId);
     }
 
-    
 
+    function addComplianceRecord(address _user, bool _isCompliant, string memory _additionalNotes, bool _furtherAction) public onlyRole(COMPLIANCE_ROLE) {
+        require(hasRole(VERIFIED_CLIENT_ROLE, _user), "Client must have VERIFIED_CLIENT_ROLE");
+        compliance.recordCompliance(_user, _isCompliant, _additionalNotes, _furtherAction);
+    }
+
+    function updateComplianceRecord(address _user, bool _isCompliant, string memory _additionalNotes, bool _furtherAction) public onlyRole(COMPLIANCE_ROLE) {
+        require(hasRole(VERIFIED_CLIENT_ROLE, _user), "Client must have VERIFIED_CLIENT_ROLE");
+        compliance.updateCompliance(_user, _isCompliant, _additionalNotes, _furtherAction);
+    }
+
+    function getComplianceRecord(address _user) public view returns (bool) {
+        return compliance.isUserCompliant(_user);
+    }
+
+    function addAuditRecord(string memory _financialAudit, string memory _securityAudit, string memory _additionalNotes, string memory _auditor, uint256 auditor_id) public onlyRole(AUDITOR_ROLE) {
+        audit.addAuditRecord(_financialAudit, _securityAudit, _additionalNotes, _auditor, auditor_id);
+    }
+
+    function getLatestAuditRecord() public view returns (uint256, string memory, string memory, string memory) {
+        return audit.getLatestAuditRecord();
+    }
 
 }
 

@@ -325,11 +325,11 @@
 	},
 	"sources": {
 		"FinalProj/Dispute.sol": {
-			"keccak256": "0xd736672d0d0f5bbe2b7a3fce050fdf5f05cbf258198d456f9c7887e1945031c4",
+			"keccak256": "0x888368e9dfa714616394de33a410c7e7bf4210d6a1592d1324adb473639e5ca3",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://bafd2cbf2d4d1b50ff7e10d48658f9dad314b0d2e11ff187c9ccfc4d10fea54b",
-				"dweb:/ipfs/QmPXS9Yz2XqrE8a3fXu3Mw7Kh78PTFvppC3UWdAMSQRUkK"
+				"bzz-raw://cff51a6025214f2db6ca0315aa691ef4e701019c75dc2fe7aa334fd44843ef4d",
+				"dweb:/ipfs/QmPYQwv4H8aqT67827QNZnZukkqBLxcRFeMimgFK7j1Joi"
 			]
 		}
 	},

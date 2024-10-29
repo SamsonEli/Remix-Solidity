@@ -1,0 +1,198 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "financialAudit",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "securityAudit",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "additionalNotes",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "auditor",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "auditor_id",
+						"type": "uint256"
+					}
+				],
+				"name": "addAuditRecord",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "auditRecords",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "financialAudit",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "securityAudit",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "additionalNotes",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "auditor",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "auditor_id",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "getAuditRecord",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAuditRecordCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getLatestAuditRecord",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"FinalProj/Audit.sol": "Audit"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"FinalProj/Audit.sol": {
+			"keccak256": "0x205a7d5df78bae629fbe94411c8a408efbdf9a8a1d409befcc756b01affe73f4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://376cb382f52c41779946a757eb7718736ef66017fb626e491ce305ade0fe0d31",
+				"dweb:/ipfs/QmarryzLhnU6yKCBGc28S1beJiYZv4teutYZRKQZuhDVs9"
+			]
+		}
+	},
+	"version": 1
+}
